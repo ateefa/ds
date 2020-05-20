@@ -1,0 +1,49 @@
+# QUEUE
+# insert,delete,firstelement,lastelement,length,isempty
+# keep track of front and rear pointer properly
+
+class Queue:
+    
+    def __init__(self):
+        self.front=-1
+        self.rear=-1
+        self.que=[0]*10
+        
+    def insert(self,value):
+        if self.front==-1 and self.rear==-1:
+            self.front=0
+            self.rear=0
+        else:
+            self.rear+=1
+        self.que[self.rear]=value
+        
+    def delete(self):
+        if self.front==self.rear:
+            self.front=self.rear=-1
+        else:
+            self.front+=1
+            
+    def isempty(self):
+        if self.front==self.rear==-1:
+            return True
+        else:
+            return False
+            
+    def length(self):
+        return self.rear-self.front+1
+        
+    def firstelement(self):
+        if not self.isempty():
+            return self.que[self.rear]
+        
+    def lastelement(self):
+        if not self.isempty():
+            return self.que[self.front]
+        
+        
+queue=Queue()
+queue.insert(5)
+queue.insert(7)
+print(queue.firstelement(),queue.lastelement())
+queue.delete()
+print(queue.firstelement(),queue.lastelement())
