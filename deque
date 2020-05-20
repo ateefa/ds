@@ -1,1 +1,89 @@
-.
+
+class Dequeue():
+    def __init__(self):
+        self.front=-1
+        self.rear=-1
+        self.size=10
+        self.deque=[0]*self.size
+        
+    def isfull(self):
+        if self.front==0 and self.rear==9:
+            return True
+        else:
+            return False
+    
+    def isempty(self):
+        if self.front==-1:
+            return True
+        else:
+            return False
+        
+    def insertFront(self,value):
+        if self.isfull():
+            return -1
+        else:
+            if self.front==0:
+                self.front=self.size-1
+            self.front=self.front-1
+            deque[self.front]=value
+            
+    def insertRear(self,value):    
+        if self.isfull():
+            return -1
+        else:
+            if self.rear==self.size-1:
+                self.rear=0
+            self.rear=(self.rear+1)%self.size    
+            deque[self.rear]=value
+            
+    def deletefront(self):
+        if self.isempty():
+            return -1
+        else:
+            if self.front==self.rear:
+                self.front=self.rear=-1
+            elif self.front==self.size -1:
+                self.front=0
+            self.front=(self.front+1)%self.size
+                
+    def deleterear(self):
+        if self.isempty():
+            return -1
+        else:
+            if self.front==self.rear:
+                self.front=self.rear=-1
+            if self.rear==0:
+                self.rear=self.size-1
+            self.rear=(self.rear-1)%self.size
+    
+
+# class Deque:
+#     def __init__(self):
+#         self.items = []
+
+#     def isEmpty(self):
+#         return self.items == []
+
+#     def addFront(self, item):
+#         self.items.append(item)
+
+#     def addRear(self, item):
+#         self.items.insert(0, item)
+
+#     def removeFront(self):
+#         return self.items.pop()
+
+#     def removeRear(self):
+#         return self.items.pop(0)
+
+#     def size(self):
+#         return len(self.items)
+
+
+# d = Deque()
+# print(d.isEmpty())
+# d.addRear(8)
+# d.addRear(5)
+# d.addFront(7)
+# d.addFront(10)
+# print(d.size())
