@@ -1,0 +1,35 @@
+# STACK
+# push pop peek isempty len
+class Stack:
+    def __init__(self):
+        self.top=-1
+        self.stk=[]
+        
+    def push(self,value):
+        self.stk.append(value)
+        self.top+=1
+    
+    def pop(self):
+        self.stk.pop()
+        self.top-=1
+        
+    def peek(self):
+        return self.stk[self.top]
+    
+    def isempty(self):
+        if top==-1:
+            return True
+        else:
+            return False
+            
+    def length(self):
+        return self.top+1
+    
+    
+stack=Stack()
+print(stack.top)
+stack.push(5)
+print(stack.peek())
+stack.pop()
+print(stack.length())
+        
