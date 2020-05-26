@@ -1,0 +1,95 @@
+# -*- coding: utf-8 -*-
+"""
+Created on Tue May 26 09:09:40 2020
+
+@author: Ateefa
+"""
+# insertbeg insertend insertafter deletebig deleteend delete search
+class Node:
+    def __init__(self,val):
+        self.val=val
+        self.next=None
+
+class LinkedList():
+    def __init__(self, head):
+        self.head=head
+
+    def insertbeg(self, val):
+        newNode=Node(val)
+        newNode.next=self.head
+        self.head=newNode
+
+    def insertend(self,val):
+        newNode=Node(val)
+        copy=self.head
+        while(copy.next!=None):
+            copy=copy.next
+        copy.next=newNode
+
+    def insertafter(self,val,after):
+        newNode=Node(val)
+        copy=self.head
+        while(copy!=None and copy.val!=after):
+            copy=copy.next
+        if copy==None:
+            print("after not found")
+        elif(copy.val==after and copy.next!=None):
+            newNode.next=copy.next
+            copy.next=newNode
+        elif copy.next==None:
+            copy.next=newNode
+
+    def search(self,searchVal):
+        copy=self.head
+        while(copy!=None and copy.val!=searchVal):
+            copy=copy.next
+        if copy==None:
+            print("value not found")
+        elif copy.val==searchVal:
+            print("found")
+
+    def deletebeg(self):
+
+        if self.head.next==None:
+            self.head=None
+
+        else:
+            copy=self.head
+            self.head=self.head.next
+            copy=None
+
+    def deleteend(self):
+        if self.head.next==None:
+            self.head=None
+        else:    
+            copy=self.head
+            temp=self.head.next
+            while(temp!=None):
+                copy=copy.next
+                temp=temp.next
+            copy.next=None
+    
+    def delete(self,searchval):
+        if self.head.val == searchval and self.head.next!=None:
+            self.head=self.head.next
+        elif self.head.val == searchval and self.head.next == None:
+            self.head=None
+        elif self.head.next != None:
+            copy=self.head
+            temp=self.head.next
+            while(temp!=None and temp.val!=searchval):
+                copy=copy.next
+                temp=temp.next
+            if temp==None: 
+                print("value not found")
+            else:
+                copy.next=copy.next.next
+            
+            
+
+head=Node(3)
+ll=LinkedList(head)
+head.next=Node(5)
+while(head!=None):
+    print(head.val)
+    head=head.next
